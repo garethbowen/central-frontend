@@ -22,7 +22,7 @@
     // `vue-tsc` errors without this, regardless of whether it's specified on
     // the CLI. Ugh.
     "noEmit": false,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "paths": {
       "@/*": ["./src/*"],
       "@locales/*": ["./locales/*"],

@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["do-not-import.js", "benchmarks", "src", "test", "types", "vite-env.d.ts"],
   "compilerOptions": {
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "types": ["node"],
     "paths": {

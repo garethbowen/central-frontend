@@ -7,7 +7,7 @@
 
     // Module system and compilation target/environment
     "isolatedModules": true,
-    "lib": ["ES2022"],
+    "lib": ["ES2023"],
     "module": "ESNext",
     "moduleDetection": "force",
     "moduleResolution": "Bundler",

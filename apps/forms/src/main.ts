@@ -9,6 +9,8 @@ import Forms from './Forms.vue';
 import router from './router';
 import { i18n } from './i18n'
 
+import './assets/style.scss';
+
 const app = createApp(Forms as Component);
 app.use(PrimeVue, { theme: { preset: odkThemePreset, options: { darkModeSelector: false } } });
 app.use(webFormsPlugin);

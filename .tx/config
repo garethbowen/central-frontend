@@ -15,3 +15,9 @@ source_lang  = en
 type         = STRUCTURED_JSON
 minimum_perc = 0
 
+[o:getodk:p:web_forms:r:app]
+file_filter  = apps/forms/locales/strings_<lang>.json
+source_file  = apps/forms/locales/strings_en.json
+source_lang  = en
+type         = STRUCTURED_JSON
+minimum_perc = 0

@@ -7,12 +7,14 @@
     "build:translations": "node ../../packages/web-forms/bin/merge-translations.js",
     "lint": "eslint . --report-unused-disable-directives --cache --max-warnings 0",
     "lint:fix": "eslint . --fix --report-unused-disable-directives --cache --max-warnings 0",
-    "test": "vitest run"
+    "test": "vitest run",
+    "translations:pull": "cd ../.. && tx pull -r web_forms.app -a -f --mode translator",
+    "translations:push": "cd ../.. && tx push -r web_forms.app -s"
   },
   "dependencies": {
+    "@formatjs/intl": "^4.1.4",
     "primevue": "4.3.3",
     "vue": "^3.5.29",
-    "vue-i18n": "^10.0.7",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {

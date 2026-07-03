@@ -1,0 +1,6 @@
+{
+  "preview.error.not_found": {
+    "string": "No se ha encontrado ningún formulario con esta URL, vuelva a comprobarlo.",
+    "developer_comment": "The error message to show when the given form isn't found on the server"
+  }
+}

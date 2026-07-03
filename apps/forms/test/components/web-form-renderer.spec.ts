@@ -1,3 +1,4 @@
+// TODO this is going to fail
 import { createRouter, createWebHistory } from 'vue-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { enableAutoUnmount, mount, VueWrapper } from '@vue/test-utils';

@@ -1,0 +1,22 @@
+{
+  "form_not_found.title": {
+    "string": "Unable to open form",
+    "developer_comment": "Error message title when the URL requested doesn't exist for some reason"
+  },
+  "form_not_found.body": {
+    "string": "Please check that the link is correct. The form may no longer be available, or your access may have expired. If the problem continues, contact the person who sent you the form link.",
+    "developer_comment": "Instructions for things the user can try to resolve the issue"
+  },
+  "error_not_problem.title": {
+    "string": "Something went wrong",
+    "developer_comment": "Erorr message shown when some unknown error occured that's not their fault"
+  },
+  "error_not_problem.body": {
+    "string": "Please try again later. If the problem continues, contact the person who sent you the form link.",
+    "developer_comment": "Instructions for things the user can try to resolve the issue"
+  },
+  "error_not_problem.status": {
+    "string": "Error code: {status}",
+    "developer_comment": "The error number returned from the server. The {status} should not be translated."
+  }
+}

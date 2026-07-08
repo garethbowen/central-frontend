@@ -113,7 +113,7 @@ export class RankControl
     instanceNode: StaticLeafElement | null,
     definition: RankDefinition<'string'>
   ) {
-    const codec = new MultipleValueItemCodec(sharedValueCodecs.string);
+    const codec = new MultipleValueItemCodec(sharedValueCodecs.string!);
     super(parent, instanceNode, definition, codec);
 
     this.appearances = definition.bodyElement.appearances;

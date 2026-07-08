@@ -1,4 +1,8 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
-  "include": ["./**/*"]
+  "include": ["./**/*"],
+  "compilerOptions": {
+    "lib": ["DOM"],
+    "types": ["node"]
+  }
 }

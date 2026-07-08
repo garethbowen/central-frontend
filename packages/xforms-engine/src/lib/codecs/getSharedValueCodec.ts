@@ -109,5 +109,5 @@ export const sharedValueCodecs: SharedValueCodecs = {
 };
 
 export const getSharedValueCodec = <V extends ValueType>(valueType: V): SharedValueCodec<V> => {
-  return sharedValueCodecs[valueType];
+  return sharedValueCodecs[valueType]!;
 };

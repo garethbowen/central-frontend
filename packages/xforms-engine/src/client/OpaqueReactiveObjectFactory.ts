@@ -1,5 +1,3 @@
-import type { DefineMutableObject } from '../../test/helpers/reactive/internal.ts';
-
 // This type is intended to satisfy two goals, each corresponding to the order
 // of the call signatures within the type:
 //

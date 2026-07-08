@@ -1,5 +1,4 @@
 import { getPropertyKeys } from '@getodk/common/lib/objects/structure.ts';
-import type { ShallowMutable } from '@getodk/common/types/helpers.js';
 import { createComputed, untrack } from 'solid-js';
 import type { OpaqueReactiveObjectFactory } from '../../../index.ts';
 import type { ReactiveScope } from '../scope.ts';
@@ -7,6 +6,7 @@ import type { EngineState } from './createEngineState.ts';
 import type { SpecifiedState, StateSpec } from './createSpecifiedState.ts';
 import type { InternalClientRepresentation } from './representations.ts';
 import { declareInternalClientRepresentation } from './representations.ts';
+import type { ShallowMutable } from '@getodk/common/types/helpers.d';
 
 const deriveInitialState = <Spec extends StateSpec>(
   scope: ReactiveScope,

@@ -32,7 +32,7 @@ export class FillFormPage {
 
   async copyToClipboard(valueToCopy: string) {
     await this.page.evaluate((value) => {
-      return navigator.clipboard.writeText(value);
+      return (navigator.clipboard as Clipboard).writeText(value);
     }, valueToCopy);
   }
 

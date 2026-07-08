@@ -1,4 +1,4 @@
-import type { AnyFunction, ExpandUnion } from '@getodk/common/types/helpers.js';
+import type { AnyFunction, ExpandUnion } from '@getodk/common/types/helpers.d';
 import type { XPathDOMAdapter, XPathNode } from '@getodk/xpath';
 
 /**

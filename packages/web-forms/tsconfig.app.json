@@ -17,12 +17,12 @@
   "compilerOptions": {
     "composite": true,
     "allowImportingTsExtensions": true,
-    "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     // `vue-tsc` errors without this, regardless of whether it's specified on
     // the CLI. Ugh.
     "noEmit": false,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "rootDir": "./src",
     "paths": {
       "@/*": ["./src/*"],
       "@locales/*": ["./locales/*"],

@@ -84,7 +84,7 @@ const getClosestSegmentAndIndex = (
 };
 
 export const isCoordsEqual = (coordA: Coordinate | undefined, coordB: Coordinate | undefined) => {
-  return coordA && coordB && coordA[0] === coordB[0] && coordA[1] === coordB[1];
+  return coordA?.[0] === coordB?.[0] && coordA?.[1] === coordB?.[1];
 };
 
 const isWithinHitTolerance = (squaredDist: number, resolution: number, hitTolerance: number) => {

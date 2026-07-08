@@ -302,6 +302,7 @@ export default defineConfig(
 			'@typescript-eslint/unbound-method': 'error',
 			'@typescript-eslint/no-explicit-any': 'error',
 			'@typescript-eslint/await-thenable': 'error',
+			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
 			'@typescript-eslint/no-empty-interface': [
 				'error',
 				{

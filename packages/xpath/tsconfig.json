@@ -5,11 +5,12 @@
     "declarationDir": "./dist",
     "lib": ["ES2022"],
     "skipLibCheck": true,
+    "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
-      "@getodk/common/test-utils/*": ["../common/test-utils/*"],
-      "@getodk/common/types/*": ["../common/types/*"],
-      "@getodk/common/*": ["../common/src/*"]
+      "@getodk/common/test-utils/*": ["../../common/test-utils/*"],
+      "@getodk/common/types/*": ["../../common/types/*"],
+      "@getodk/common/*": ["../../common/src/*"]
     }
   }
 }

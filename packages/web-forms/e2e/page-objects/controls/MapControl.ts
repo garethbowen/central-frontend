@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { ElementHandle, expect, Locator, Page } from '@playwright/test';
 
 export class MapControl {
   private readonly MAP_COMPONENT_SELECTOR = '.map-block-component';
@@ -29,7 +29,7 @@ export class MapControl {
    * the element, so JavaScript scroll is used to ensure the map is centered and fully visible.
    */
   async scrollMapIntoView(mapComponent: Locator) {
-    const handle = await mapComponent.elementHandle();
+    const handle = (await mapComponent.elementHandle()) as ElementHandle<HTMLElement>;
     if (handle) {
       await handle.evaluate((el) => el.scrollIntoView({ block: 'center' }));
     }

@@ -15,9 +15,9 @@
     // `vue-tsc` errors without this, regardless of whether it's specified on
     // the CLI. Ugh.
     "noEmit": false,
-    "module": "ESNext",
     "moduleResolution": "Bundler",
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
+    "rootDir": "./src"
   }
 }

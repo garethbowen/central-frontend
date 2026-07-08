@@ -15,6 +15,7 @@
   "exclude": ["../common/src/test/**/*.ts"],
   "compilerOptions": {
     "composite": true,
+    "rootDir": "./src",
     "types": ["node", "jsdom", "vite/client"]
   }
 }

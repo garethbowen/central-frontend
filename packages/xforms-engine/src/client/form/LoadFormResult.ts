@@ -1,10 +1,10 @@
 import type { UnknownObject } from '@getodk/common/lib/type-assertions/assertUnknownObject.ts';
-import type { AnyFunction } from '@getodk/common/types/helpers.js';
 import type { LoadFormFailureError } from '../../error/LoadFormFailureError.ts';
 import type { CreateFormInstance } from './CreateFormInstance.ts';
 import type { EditFormInstance } from './EditFormInstance.ts';
 import type { ResetFormInstance } from './ResetFormInstance.ts';
 import type { RestoreFormInstance } from './RestoreFormInstance.ts';
+import type { AnyFunction } from '@getodk/common/types/helpers.d';
 
 // Re-export for client access
 export type { LoadFormFailureError };

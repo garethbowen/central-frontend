@@ -324,7 +324,7 @@ export const findLocationPathSubExpressionNodes = (
 ): readonly PathExpressionNode[] => {
   const baseResults = collectTypedNodes(pathExpressionTypes, syntaxNode);
 
-  return baseResults.flatMap((node) => {
+  return baseResults.flatMap((node: TypedSyntaxNode<AnySyntaxType>) => {
     // Note: `collectTypedNodes`, as called, is shallowly recursive. Our intent
     // is to operate on complete path expressions, relying on downstream logic
     // to determine if and how deeper recursion is appropriate.

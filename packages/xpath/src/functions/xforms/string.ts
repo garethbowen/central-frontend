@@ -2,7 +2,7 @@
 import { MD5, SHA1, SHA256, SHA384, SHA512 } from 'crypto-js';
 import * as base64 from 'crypto-js/enc-base64';
 import * as hex from 'crypto-js/enc-hex';
-import { base64Decode as decode } from '../../../../common/src/lib/web-compat/base64.ts';
+import { base64Decode as decode } from '@getodk/common/lib/web-compat/base64.ts';
 import type { XPathNode } from '../../adapter/interface/XPathNode.ts';
 import { IncompatibleRuntimeEnvironmentError } from '../../error/IncompatibleRuntimeEnvironmentError.ts';
 import type { Evaluation } from '../../evaluations/Evaluation.ts';

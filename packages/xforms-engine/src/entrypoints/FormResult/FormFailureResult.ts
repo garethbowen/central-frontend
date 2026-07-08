@@ -1,4 +1,4 @@
-import type { AnyFunction } from '@getodk/common/types/helpers.js';
+import type { AnyFunction } from '@getodk/common/types/helpers.d';
 import type { CreateFormInstance } from '../../client/form/CreateFormInstance.ts';
 import type { EditFormInstance } from '../../client/form/EditFormInstance.ts';
 import type {

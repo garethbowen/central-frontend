@@ -1,4 +1,4 @@
-import type { Identity } from '@getodk/common/types/helpers.js';
+import type { Identity } from '@getodk/common/types/helpers.d';
 import type {
   AnySyntaxNode,
   SyntaxNode,
@@ -50,10 +50,10 @@ const collectTypedChildren = <const Type extends AnySyntaxType>(
 export const collectTypedNodes = <const Type extends AnySyntaxType>(
   types: readonly [Type, ...Type[]],
   currentNode: AnySyntaxNode,
-  options: CollectNodesOptions = {}
+  options?: CollectNodesOptions
 ): CollectedNodes<Type> => {
   if (isTypedNodeMatch(types, currentNode)) {
-    if (options.recurseMatchedNodes) {
+    if (options?.recurseMatchedNodes) {
       return [currentNode, ...collectTypedChildren(types, currentNode, options)];
     }
 

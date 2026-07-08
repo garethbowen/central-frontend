@@ -7,16 +7,11 @@
 
     // Module system and compilation target/environment
     "isolatedModules": true,
-    "lib": ["ES2022"],
-    "module": "ESNext",
     "moduleDetection": "force",
-    "moduleResolution": "Bundler",
     "resolvePackageJsonImports": true,
-    "target": "ESNext", // Top-level await requires this
 
     // Modules and TypeScript esoterica
     "allowImportingTsExtensions": true,
-    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
 
     // Build, if/when it goes through `tsc`
@@ -33,11 +28,10 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
 
     // No installed types used by default, to be overridden in individual
     // configs as necessary
-    "types": []
+    "types": ["node"]
   },
   "include": [],
   "files": ["./tsconfig.json"],

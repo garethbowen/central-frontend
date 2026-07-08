@@ -9,9 +9,9 @@
     "locales/**/*"
   ],
   "exclude": [
-    "../common/src/test/**/*.ts",
     "node_modules",
     "../../node_modules",
+    "../common/",
     "src/**/__tests__/*"
   ],
   "compilerOptions": {
@@ -21,14 +21,14 @@
     // `vue-tsc` errors without this, regardless of whether it's specified on
     // the CLI. Ugh.
     "noEmit": false,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM"],
     "rootDir": "./src",
     "paths": {
       "@/*": ["./src/*"],
       "@locales/*": ["./locales/*"],
-      "@getodk/common/test-utils/*": ["../common/test-utils/*"],
-      "@getodk/common/types/*": ["../common/types/*"],
-      "@getodk/common/*": ["../common/src/*"]
+      "@getodk/common/test-utils/*": ["../../common/test-utils/*"],
+      "@getodk/common/types/*": ["../../common/types/*"],
+      "@getodk/common/*": ["../../common/src/*"]
     },
     "types": ["node"],
     "skipLibCheck": true,

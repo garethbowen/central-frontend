@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ISO_DATE_LIKE_PATTERN } from '@getodk/common/constants/datetime.ts';
+import { ISO_DATE_LIKE_PATTERN } from '@getodk/common/constants/datetime';
 import type { DateInputNode } from '@getodk/xforms-engine';
 import DatePicker from 'primevue/datepicker';
 import { computed } from 'vue';

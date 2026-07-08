@@ -1,5 +1,5 @@
 import { TRANSLATE, SUBMIT_PRESSED } from '@/lib/constants/injection-keys.ts';
-import { xformFixturesByIdentifier } from '@getodk/common/fixtures/xforms.ts';
+import { xformFixturesByIdentifier } from '@getodk/common/fixtures/xforms';
 import type { AnyFunction } from '@getodk/common/types/helpers.d.ts';
 import type { RootNode } from '@getodk/xforms-engine';
 import { createInstance } from '@getodk/xforms-engine';

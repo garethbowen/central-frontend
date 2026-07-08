@@ -1,7 +1,7 @@
 import {
   isUnknownObject,
   type UnknownObject,
-} from '@getodk/common/lib/runtime-types/shared-type-predicates.ts';
+} from '@getodk/common/lib/runtime-types/shared-type-predicates';
 import type { createInstance } from '@getodk/xforms-engine';
 
 interface ErrorLike {

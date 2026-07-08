@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
   "include": [
-    "../common/src/**/*.ts",
-    "../common/types/**/*.ts",
     "env.d.ts",
     "src/components/__tests__",
     "tests",
@@ -10,12 +8,22 @@
     "src/components/**/*.vue",
     "src/components/**/*.ts",
     "src/lib/**/*.ts",
-    "src/odk-theme-preset.ts"
+    "src/odk-theme-preset.ts",
+    "../../common/src/**/*.ts",
+    "../../common/types/**/*.ts"
   ],
   "exclude": ["../common/src/test/**/*.ts"],
   "compilerOptions": {
     "composite": true,
-    "rootDir": "./src",
-    "types": ["node", "jsdom", "vite/client"]
+    "rootDir": "./",
+    "types": ["node", "jsdom", "vite/client"],
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@locales/*": ["./locales/*"],
+      "@getodk/common/test-utils/*": ["../../common/test-utils/*"],
+      "@getodk/common/types/*": ["../../common/types/*"],
+      "@getodk/common/*": ["../../common/src/*"]
+    },
   }
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { POST_SUBMIT__NEW_INSTANCE } from '@/lib/constants/control-flow';
 import type { HostSubmissionResultCallback } from '@/lib/submission/host-submission-result-callback';
-import { xformFixturesByCategory, XFormResource } from '@getodk/common/fixtures/xforms.ts';
+import { xformFixturesByCategory, XFormResource } from '@getodk/common/fixtures/xforms';
 import type {
 	ChunkedInstancePayload,
 	FetchFormAttachment,

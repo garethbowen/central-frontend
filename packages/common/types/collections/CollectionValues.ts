@@ -1,4 +1,4 @@
-import type { Identity } from '../helpers';
+import type { Identity } from '../helpers.d.ts';
 
 // prettier-ignore
 export type CollectionValues<T> = Identity<

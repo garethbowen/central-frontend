@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue';
-import type { IntervalID } from '@getodk/common/types/timers.ts';
+import type { IntervalID } from '@getodk/common/types/timers';
 
 type TimeMinute = number;
 type TimeSecond = number;

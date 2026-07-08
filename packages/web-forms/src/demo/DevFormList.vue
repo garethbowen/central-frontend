@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { xformFixturesByCategory } from '@getodk/common/fixtures/xforms.ts';
+import { xformFixturesByCategory } from '@getodk/common/fixtures/xforms';
 import { RouterLink } from 'vue-router';
 </script>
 

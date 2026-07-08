@@ -4,7 +4,7 @@ import { assert, beforeEach, describe, expect, it } from 'vitest';
 import {
   resolveDependencyNodesets,
   type PathResolutionOptions,
-} from '../../../src/parse/xpath/dependency-analysis.ts';
+} from '../../../src/parse/xpath/dependency-analysis';
 
 describe('Dependency analysis', () => {
   interface ResolveDependencyNodesetsCase {

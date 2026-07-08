@@ -1,4 +1,4 @@
-import type { Awaitable } from '@getodk/common/types/helpers.js';
+import type { Awaitable } from '@getodk/common/types/helpers.d.ts';
 import type { POST_SUBMIT__NEW_INSTANCE } from '../constants/control-flow.ts';
 
 export interface HostSubmissionResult {

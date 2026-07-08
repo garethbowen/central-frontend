@@ -1,8 +1,15 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src/**/*.ts", "test-utils/**/*.ts", "test", "types/**/*.ts", "vite-env.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "test-utils/**/*.ts",
+    "test",
+    "types/**/*.ts",
+    "vite-env.d.ts"
+  ],
   "compilerOptions": {
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM"],
+    "composite": true,
     "types": ["node"],
     "skipLibCheck": true
   }

@@ -1,6 +1,6 @@
 import { toGeoJsonCoordinateArray } from '@/components/common/map/geojson-parsers.ts';
 import { createCurrentLocationStyle } from '@/components/common/map/map-styles.ts';
-import type { TimerID } from '@getodk/common/types/timers.ts';
+import type { TimerID } from '@getodk/common/types/timers';
 import { Map, type View } from 'ol';
 import type { Coordinate } from 'ol/coordinate';
 import { easeOut } from 'ol/easing';

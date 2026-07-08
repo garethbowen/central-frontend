@@ -5,7 +5,7 @@ import ValidationMessage from '@/components/common/ValidationMessage.vue';
 import ControlText from '@/components/form-elements/ControlText.vue';
 import { TRANSLATE } from '@/lib/constants/injection-keys.ts';
 import type { Translate } from '@/lib/locale/useLocale.ts';
-import type { TimerID } from '@getodk/common/types/timers.ts';
+import type { TimerID } from '@getodk/common/types/timers';
 import type { RankNode } from '@getodk/xforms-engine';
 import { inject, type Ref } from 'vue';
 import { computed, ref } from 'vue';

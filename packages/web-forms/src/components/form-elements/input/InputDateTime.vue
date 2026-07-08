@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ISO_DATE_TIME_WITH_OPTIONAL_OFFSET_PATTERN } from '@getodk/common/constants/datetime.ts';
+import { ISO_DATE_TIME_WITH_OPTIONAL_OFFSET_PATTERN } from '@getodk/common/constants/datetime';
 import { type DateTimeInputNode } from '@getodk/xforms-engine';
 import DatePicker from 'primevue/datepicker';
 import { computed } from 'vue';

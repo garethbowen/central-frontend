@@ -49,8 +49,13 @@ const collectInstanceAttachmentFiles = (attachments: InstanceAttachmentsState): 
 };
 
 export class InstanceFile extends File implements ClientInstanceFile {
-  override readonly name = INSTANCE_FILE_NAME;
-  override readonly type = INSTANCE_FILE_TYPE;
+  override get name(): INSTANCE_FILE_NAME {
+    return INSTANCE_FILE_NAME;
+  }
+
+  override get type(): INSTANCE_FILE_TYPE {
+    return INSTANCE_FILE_TYPE;
+  }
 
   constructor(instanceXML: string) {
     super([instanceXML], INSTANCE_FILE_NAME, {

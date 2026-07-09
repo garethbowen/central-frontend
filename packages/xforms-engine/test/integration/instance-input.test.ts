@@ -25,9 +25,9 @@ import { constants } from '@getodk/xforms-engine';
 import type { MockInstance } from 'vitest';
 import { afterEach, assert, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ComparableAnswer } from '../scenario/answer/ComparableAnswer.ts';
-import { intAnswer } from '../scenario/answer/ExpectedIntAnswer.ts';
-import { stringAnswer } from '../scenario/answer/ExpectedStringAnswer.ts';
-import { Scenario } from '../scenario/jr/Scenario.ts';
+import { intAnswer } from '../scenario/answer/ExpectedIntAnswer';
+import { stringAnswer } from '../scenario/answer/ExpectedStringAnswer';
+import { Scenario } from '../scenario/jr/Scenario';
 
 type InstanceRoundTripInitializationMode = 'edit' | 'restore';
 
@@ -80,8 +80,13 @@ describe.each<InstanceRoundTripCase>([
   const { INSTANCE_FILE_NAME, INSTANCE_FILE_TYPE } = constants;
 
   class FabricatedInstanceFile extends File implements InstanceFile {
-    override readonly name = INSTANCE_FILE_NAME;
-    override readonly type = INSTANCE_FILE_TYPE;
+    override get name(): typeof INSTANCE_FILE_NAME {
+      return INSTANCE_FILE_NAME;
+    }
+
+    override get type(): typeof INSTANCE_FILE_TYPE {
+      return INSTANCE_FILE_TYPE;
+    }
 
     constructor(instanceElement: XFormsElement) {
       super([instanceElement.asXml()], INSTANCE_FILE_NAME);

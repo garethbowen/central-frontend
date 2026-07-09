@@ -26,7 +26,7 @@ import type {
 import { constants as ENGINE_CONSTANTS } from '@getodk/xforms-engine';
 import { afterEach, assert, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { TestFormOptions } from '../../scenario/client/init.ts';
-import { Scenario } from '../../scenario/jr/Scenario.ts';
+import { Scenario } from '../../scenario/jr/Scenario';
 
 describe('Instance attachments: binary output', () => {
   const FAKE_INSTANCE_ID = 'not important to this suite';
@@ -330,8 +330,13 @@ describe('Instance attachments: binary output', () => {
     const INDISTINGUISHABLE_FILE_NAME = `${INDISTINGUISHABLE_BASE_NAME}.txt`;
 
     class IndistinguishablyNamedFile extends File {
-      override readonly name = INDISTINGUISHABLE_FILE_NAME;
-      override readonly type = 'text/plain';
+      override get name(): string {
+        return INDISTINGUISHABLE_FILE_NAME;
+      }
+
+      override get type(): string {
+        return 'text/plain';
+      }
 
       constructor(data: string) {
         super([data], INDISTINGUISHABLE_FILE_NAME, { type: 'text/plain' });

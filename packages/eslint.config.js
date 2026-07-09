@@ -239,6 +239,8 @@ export default defineConfig(
 					'../packages/web-forms/tsconfig.vitest.json',
 
 					'../packages/web-forms/bin/tsconfig.json',
+
+					'../packages/xforms-engine/tsconfig.test.json',
 				],
 			},
 

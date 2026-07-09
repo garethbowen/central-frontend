@@ -8,12 +8,7 @@
     "src/**/*.vue",
     "locales/**/*"
   ],
-  "exclude": [
-    "node_modules",
-    "../../node_modules",
-    "../common/",
-    "src/**/__tests__/*"
-  ],
+  "exclude": ["node_modules", "../../node_modules", "../common/", "src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
     "allowImportingTsExtensions": true,

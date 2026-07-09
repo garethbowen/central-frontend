@@ -10,8 +10,8 @@ import {
   title,
 } from '@getodk/common/test-utils/xform-dsl/index.ts';
 import { describe, expect, it } from 'vitest';
-import { expectedDistance } from '../../../scenario/answer/ExpectedApproximateUOMAnswer.ts';
-import { Scenario } from '../../../scenario/jr/Scenario.ts';
+import { expectedDistance } from '../../../scenario/answer/ExpectedApproximateUOMAnswer';
+import { Scenario } from '../../../scenario/jr/Scenario';
 
 /**
  * **PORTING NOTES**

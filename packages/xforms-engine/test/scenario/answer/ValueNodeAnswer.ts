@@ -6,7 +6,7 @@ import type {
   RankNode,
   SelectNode,
 } from '@getodk/xforms-engine';
-import { ComparableAnswer } from './ComparableAnswer.ts';
+import { ComparableAnswer } from './ComparableAnswer';
 
 // prettier-ignore
 export type ValueNode =

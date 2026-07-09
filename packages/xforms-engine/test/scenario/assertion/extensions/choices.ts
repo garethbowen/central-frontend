@@ -1,13 +1,13 @@
 import { expect } from 'vitest';
-import type { JSONValue } from '../../../types/JSONValue.ts';
-import { ComparableChoice } from '../../choice/ComparableChoice.ts';
-import { ExpectedChoice } from '../../choice/ExpectedChoice.ts';
-import { SelectChoiceList } from '../../jr/select/SelectChoiceList.ts';
-import { instanceArrayAssertion } from '../instanceArrayAssertion.ts';
-import { instanceAssertion } from '../instanceAssertion.ts';
-import { AsymmetricTypedExpectExtension } from '../vitest/AsymmetricTypedExpectExtension.ts';
-import { extendExpect } from '../vitest/extendExpect.ts';
-import { InspectableComparisonError } from '../vitest/InspectableComparisonError.ts';
+import type { JSONValue } from '../../../types/JSONValue';
+import { ComparableChoice } from '../../choice/ComparableChoice';
+import { ExpectedChoice } from '../../choice/ExpectedChoice';
+import { SelectChoiceList } from '../../jr/select/SelectChoiceList';
+import { instanceArrayAssertion } from '../instanceArrayAssertion';
+import { instanceAssertion } from '../instanceAssertion';
+import { AsymmetricTypedExpectExtension } from '../vitest/AsymmetricTypedExpectExtension';
+import { extendExpect } from '../vitest/extendExpect';
+import { InspectableComparisonError } from '../vitest/InspectableComparisonError';
 import type {
   CustomInspectable,
   DeriveStaticVitestExpectExtension,

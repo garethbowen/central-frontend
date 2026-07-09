@@ -1,9 +1,9 @@
 import type { SyncExpectationResult } from 'vitest';
 import type { AssertIs } from '../AssertIs.ts';
-import { assertVoidExpectedArgument } from './assertVoidExpectedArgument.ts';
-import { expandSimpleExpectExtensionResult } from './expandSimpleExpectExtensionResult.ts';
-import type { ExpectExtensionMethod } from './shared-extension-types.ts';
-import { validatedExtensionMethod } from './validatedExtensionMethod.ts';
+import { assertVoidExpectedArgument } from './assertVoidExpectedArgument';
+import { expandSimpleExpectExtensionResult } from './expandSimpleExpectExtensionResult';
+import type { ExpectExtensionMethod } from './shared-extension-types';
+import { validatedExtensionMethod } from './validatedExtensionMethod';
 
 export class ArbitraryConditionExpectExtension<Parameter> {
   readonly extensionMethod: ExpectExtensionMethod<unknown, unknown, SyncExpectationResult>;

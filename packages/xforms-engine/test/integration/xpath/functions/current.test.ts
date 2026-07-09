@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { stringAnswer } from '../../../scenario/answer/ExpectedStringAnswer.ts';
-import { choice } from '../../../scenario/choice/ExpectedChoice.ts';
-import { Scenario } from '../../../scenario/jr/Scenario.ts';
+import { stringAnswer } from '../../../scenario/answer/ExpectedStringAnswer';
+import { choice } from '../../../scenario/choice/ExpectedChoice';
+import { Scenario } from '../../../scenario/jr/Scenario';
 
 /**
  *

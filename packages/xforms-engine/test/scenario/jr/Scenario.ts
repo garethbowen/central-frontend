@@ -19,42 +19,42 @@ import { constants as ENGINE_CONSTANTS } from '@getodk/xforms-engine';
 import type { Accessor, Owner, Setter } from 'solid-js';
 import { createMemo, createSignal } from 'solid-js';
 import { afterEach, assert, expect } from 'vitest';
-import { AttributeNodeAnswer } from '../answer/AttributeNodeAnswer.ts';
-import { RankValuesAnswer } from '../answer/RankValuesAnswer.ts';
-import { SelectValuesAnswer } from '../answer/SelectValuesAnswer.ts';
+import { AttributeNodeAnswer } from '../answer/AttributeNodeAnswer';
+import { RankValuesAnswer } from '../answer/RankValuesAnswer';
+import { SelectValuesAnswer } from '../answer/SelectValuesAnswer';
 import type { ValueNodeAnswer } from '../answer/ValueNodeAnswer.ts';
-import { answerOf } from '../client/answerOf.ts';
-import { editInstance } from '../client/editInstance.ts';
-import type { InitializableForm, TestFormOptions } from '../client/init.ts';
-import { initializeTestForm } from '../client/init.ts';
-import { isRepeatRange } from '../client/predicates.ts';
-import { runInSolidScope } from '../client/solid-helpers.ts';
-import { getClosestRepeatRange, getNodeForReference } from '../client/traversal.ts';
-import { ImplementationPendingError } from '../error/ImplementationPendingError.ts';
-import { UnclearApplicabilityError } from '../error/UnclearApplicabilityError.ts';
-import type { ReactiveScenario } from '../reactive/ReactiveScenario.ts';
-import { SharedJRResourceService } from '../resources/SharedJRResourceService.ts';
-import type { BeginningOfFormEvent } from './event/BeginningOfFormEvent.ts';
-import type { EndOfFormEvent } from './event/EndOfFormEvent.ts';
-import { PositionalEvent } from './event/PositionalEvent.ts';
-import type { QuestionNodeType } from './event/QuestionEvent.ts';
-import { RepeatInstanceEvent } from './event/RepeatInstanceEvent.ts';
+import { answerOf } from '../client/answerOf';
+import { editInstance } from '../client/editInstance';
+import type { InitializableForm, TestFormOptions } from '../client/init';
+import { initializeTestForm } from '../client/init';
+import { isRepeatRange } from '../client/predicates';
+import { runInSolidScope } from '../client/solid-helpers';
+import { getClosestRepeatRange, getNodeForReference } from '../client/traversal';
+import { ImplementationPendingError } from '../error/ImplementationPendingError';
+import { UnclearApplicabilityError } from '../error/UnclearApplicabilityError';
+import type { ReactiveScenario } from '../reactive/ReactiveScenario';
+import { SharedJRResourceService } from '../resources/SharedJRResourceService';
+import type { BeginningOfFormEvent } from './event/BeginningOfFormEvent';
+import type { EndOfFormEvent } from './event/EndOfFormEvent';
+import { PositionalEvent } from './event/PositionalEvent';
+import type { QuestionNodeType } from './event/QuestionEvent';
+import { RepeatInstanceEvent } from './event/RepeatInstanceEvent';
 import type { SelectQuestionEvent } from './event/SelectQuestionEvent.ts';
 import {
   getPositionalEvents,
   type AnyPositionalEvent,
   type NonTerminalPositionalEvent,
   type PositionalEvents,
-} from './event/getPositionalEvents.ts';
-import { isQuestionEventOfType, type TypedQuestionEvent } from './event/predicates.ts';
-import { JRFormDef } from './form/JRFormDef.ts';
-import { JRFormIndex } from './form/JRFormIndex.ts';
-import type { FormDefinitionResource } from './resource/FormDefinitionResource.ts';
-import { r } from './resource/ResourcePathHelper.ts';
-import { SelectChoiceList } from './select/SelectChoiceList.ts';
-import { ValidateOutcome } from './validation/ValidateOutcome.ts';
-import { JREvaluationContext } from './xpath/JREvaluationContext.ts';
-import { JRTreeReference } from './xpath/JRTreeReference.ts';
+} from './event/getPositionalEvents';
+import { isQuestionEventOfType, type TypedQuestionEvent } from './event/predicates';
+import { JRFormDef } from './form/JRFormDef';
+import { JRFormIndex } from './form/JRFormIndex';
+import type { FormDefinitionResource } from './resource/FormDefinitionResource';
+import { r } from './resource/ResourcePathHelper';
+import { SelectChoiceList } from './select/SelectChoiceList';
+import { ValidateOutcome } from './validation/ValidateOutcome';
+import { JREvaluationContext } from './xpath/JREvaluationContext';
+import { JRTreeReference } from './xpath/JRTreeReference';
 
 /**
  * Satisfies the xforms-engine client `stateFactory` option. Currently this is

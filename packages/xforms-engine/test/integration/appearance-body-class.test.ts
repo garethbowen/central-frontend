@@ -12,7 +12,7 @@ import {
   title,
 } from '@getodk/common/test-utils/xform-dsl/index.ts';
 import { describe, expect, it } from 'vitest';
-import { Scenario } from '../scenario/jr/Scenario.ts';
+import { Scenario } from '../scenario/jr/Scenario';
 
 const element = (
   name: string,

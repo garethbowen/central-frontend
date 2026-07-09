@@ -2,24 +2,25 @@ import { UnreachableError } from '@getodk/common/lib/error/UnreachableError.ts';
 import { getBlobText } from '@getodk/common/lib/web-compat/blob.ts';
 import { type ValidationCondition } from '@getodk/xforms-engine';
 import { assert, expect } from 'vitest';
-import { ComparableAnswer } from '../../answer/ComparableAnswer.ts';
-import { ExpectedApproximateUOMAnswer } from '../../answer/ExpectedApproximateUOMAnswer.ts';
-import { ExpectedBinaryAnswer } from '../../answer/ExpectedBinaryAnswer.ts';
-import { UploadNodeAnswer } from '../../answer/UploadNodeAnswer.ts';
-import { type ValueNode, ValueNodeAnswer } from '../../answer/ValueNodeAnswer.ts';
-import { AnswerResult } from '../../jr/Scenario.ts';
-import { instanceAssertion } from '../instanceAssertion.ts';
-import { AsymmetricTypedExpectExtension } from '../vitest/AsymmetricTypedExpectExtension.ts';
-import { AsyncAsymmetricTypedExpectExtension } from '../vitest/AsyncAsymmetricTypedExpectExtension.ts';
-import { extendExpect } from '../vitest/extendExpect.ts';
-import { InspectableComparisonError } from '../vitest/InspectableComparisonError.ts';
+import { ComparableAnswer } from '../../answer/ComparableAnswer';
+import { ExpectedApproximateUOMAnswer } from '../../answer/ExpectedApproximateUOMAnswer';
+import { ExpectedBinaryAnswer } from '../../answer/ExpectedBinaryAnswer';
+import { UploadNodeAnswer } from '../../answer/UploadNodeAnswer';
+import { type ValueNode, ValueNodeAnswer } from '../../answer/ValueNodeAnswer';
+import { AnswerResult } from '../../jr/Scenario';
+import { instanceAssertion } from '../instanceAssertion';
+import { AsymmetricTypedExpectExtension } from '../vitest/AsymmetricTypedExpectExtension';
+import { AsyncAsymmetricTypedExpectExtension } from '../vitest/AsyncAsymmetricTypedExpectExtension';
+import { extendExpect } from '../vitest/extendExpect';
+import { InspectableComparisonError } from '../vitest/InspectableComparisonError';
 import type {
   DeriveStaticVitestExpectExtension,
   SimpleAssertionResult,
-} from '../vitest/shared-extension-types.ts';
-import { StaticConditionExpectExtension } from '../vitest/StaticConditionExpectExtension.ts';
-import { SymmetricTypedExpectExtension } from '../vitest/SymmetricTypedExpectExtension.ts';
-import { assertNullableString, assertString } from './shared-type-assertions.ts';
+} from '../vitest/shared-extension-types';
+import { StaticConditionExpectExtension } from '../vitest/StaticConditionExpectExtension';
+import { SymmetricTypedExpectExtension } from '../vitest/SymmetricTypedExpectExtension';
+import { assertNullableString, assertString } from './shared-type-assertions';
+import { JSONObject } from '../../../types/JSONValue';
 
 const assertComparableAnswer = instanceAssertion(ComparableAnswer);
 
@@ -39,7 +40,7 @@ const assertAnswerResult: AssertAnswerResult = (value) => {
   }
 };
 
-const matchDefaultMessage = (condition: ValidationCondition) => {
+const matchDefaultMessage = (condition: ValidationCondition): JSONObject => {
   return {
     node: {
       validationState: {

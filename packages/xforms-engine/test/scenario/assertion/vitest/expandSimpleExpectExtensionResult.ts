@@ -1,6 +1,6 @@
 import type { SyncExpectationResult } from 'vitest';
-import { isErrorLike } from './isErrorLike.ts';
-import type { ExpectExtensionMethod, SimpleAssertionResult } from './shared-extension-types.ts';
+import { isErrorLike } from './isErrorLike';
+import type { ExpectExtensionMethod, SimpleAssertionResult } from './shared-extension-types';
 
 /**
  * Where Vitest assertion extends may be defined to return a

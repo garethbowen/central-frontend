@@ -1,8 +1,8 @@
 import type { SyncExpectationResult } from 'vitest';
-import type { AssertIs } from '../AssertIs.ts';
-import { expandSimpleExpectExtensionResult } from './expandSimpleExpectExtensionResult.ts';
-import type { ExpectExtensionMethod } from './shared-extension-types.ts';
-import { validatedExtensionMethod } from './validatedExtensionMethod.ts';
+import type { AssertIs } from '../AssertIs';
+import { expandSimpleExpectExtensionResult } from './expandSimpleExpectExtensionResult';
+import type { ExpectExtensionMethod } from './shared-extension-types';
+import { validatedExtensionMethod } from './validatedExtensionMethod';
 
 /**
  * Generalizes definition of a Vitest `expect` API extension where the assertion

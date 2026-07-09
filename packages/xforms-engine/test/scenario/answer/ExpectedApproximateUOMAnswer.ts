@@ -1,7 +1,7 @@
 import { UnreachableError } from '@getodk/common/lib/error/UnreachableError.ts';
 import type { JSONValue } from '../../types/JSONValue.ts';
 import type { CustomInspectable } from '../assertion/vitest/shared-extension-types.ts';
-import { ComparableAnswer } from './ComparableAnswer.ts';
+import { ComparableAnswer } from './ComparableAnswer';
 
 type ToPrimitiveHint = 'default' | 'number' | 'string';
 

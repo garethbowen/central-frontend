@@ -9,17 +9,14 @@ import {
   repeat,
   t,
   title,
-} from '@getodk/common/test-utils/xform-dsl/index.ts';
+} from '@getodk/common/test-utils/xform-dsl/index';
 import type { ExpectStatic, JestAssertion } from 'vitest';
 import { describe, expect, it } from 'vitest';
-import {
-  expectedArea,
-  expectedDistance,
-} from '../../scenario/answer/ExpectedApproximateUOMAnswer.ts';
-import { floatAnswer } from '../../scenario/answer/ExpectedFloatAnswer.ts';
-import { stringAnswer } from '../../scenario/answer/ExpectedStringAnswer.ts';
-import { Scenario } from '../../scenario/jr/Scenario.ts';
-import { EARTH_EQUATORIAL_CIRCUMFERENCE_METERS } from '../../scenario/jr/core/util/GeoUtils.ts';
+import { expectedArea, expectedDistance } from '../../scenario/answer/ExpectedApproximateUOMAnswer';
+import { floatAnswer } from '../../scenario/answer/ExpectedFloatAnswer';
+import { stringAnswer } from '../../scenario/answer/ExpectedStringAnswer';
+import { Scenario } from '../../scenario/jr/Scenario';
+import { EARTH_EQUATORIAL_CIRCUMFERENCE_METERS } from '../../scenario/jr/core/util/GeoUtils';
 
 const NINETY_DEGREES_ON_EQUATOR_KM = EARTH_EQUATORIAL_CIRCUMFERENCE_METERS / 4;
 

@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["test", "vite-env.d.ts"],
+  "compilerOptions": {
+    "types": ["node", "jsdom", "vite/client", "vitest/globals"],
+    "skipLibCheck": true,
+    "rootDir": "./"
+  }
+}

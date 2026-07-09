@@ -20,7 +20,7 @@ import type {
 import { StaticConditionExpectExtension } from '../vitest/StaticConditionExpectExtension';
 import { SymmetricTypedExpectExtension } from '../vitest/SymmetricTypedExpectExtension';
 import { assertNullableString, assertString } from './shared-type-assertions';
-import { JSONObject } from '../../../types/JSONValue';
+import type { JSONObject } from '../../../types/JSONValue';
 
 const assertComparableAnswer = instanceAssertion(ComparableAnswer);
 

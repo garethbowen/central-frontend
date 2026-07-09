@@ -1,8 +1,8 @@
-import './extensions/answers.ts';
-import './extensions/appearances.ts';
-import './extensions/body-classes.ts';
-import './extensions/choices.ts';
-import './extensions/form-state.ts';
-import './extensions/node-state.ts';
-import './extensions/submission.ts';
-import './extensions/tree-reference.ts';
+import './extensions/answers';
+import './extensions/appearances';
+import './extensions/body-classes';
+import './extensions/choices';
+import './extensions/form-state';
+import './extensions/node-state';
+import './extensions/submission';
+import './extensions/tree-reference';

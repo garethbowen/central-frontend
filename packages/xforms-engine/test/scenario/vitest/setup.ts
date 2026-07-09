@@ -1,1 +1,1 @@
-import '../assertion/setup.ts';
+import '../assertion/setup';

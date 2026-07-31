@@ -39,8 +39,12 @@ export class SecondaryInstancesDefinition
   extends Map<string, SecondaryInstanceRootDefinition>
   implements XFormsSecondaryInstanceMap<EngineXPathNode>
 {
+
+  readonly mutableSources: CSVExternalSecondaryInstanceSource[];
+
   /**
    * @package Only to be used for testing
+   * TODO remove this?
    */
   static loadSync(xformDOM: XFormDOM): SecondaryInstancesDefinition {
     const { secondaryInstanceElements } = xformDOM;
@@ -57,7 +61,29 @@ export class SecondaryInstancesDefinition
       return new InternalSecondaryInstanceSource(instanceId, src, domElement);
     });
 
-    return new this(sources);
+    return new this(sources, xformDOM);
+  }
+
+  async reloadMutableSecondaryInstances(): Promise<void> {
+    console.log('loading', this.options, this.mutableSources.length);
+    if (!this.options) { // only happens when testing - remove the sync load fn above
+      return;
+    }
+    await Promise.all(
+      this.mutableSources.map(source => {
+        return ExternalSecondaryInstanceResource.load(
+          source.instanceId,
+          source.resourceURL,
+          this.options!
+        ).then(resource => {
+          if (resource.format === 'csv') { // this is guaranteed
+            const refreshed = new CSVExternalSecondaryInstanceSource(source.domElement, resource);
+            const { root } = refreshed.parseDefinition();
+            this.set(root.getAttributeValue('id'), root);
+          }
+        })
+      })
+    );
   }
 
   static async load(
@@ -113,16 +139,27 @@ export class SecondaryInstancesDefinition
       })
     );
 
-    return new this(sources);
+    return new this(sources, xformDOM, options);
   }
 
-  private constructor(sources: readonly SecondaryInstanceSource[]) {
+  private constructor(
+    sources: readonly SecondaryInstanceSource[],
+    readonly xformDOM: XFormDOM,
+    readonly options?: ExternalSecondaryInstanceResourceLoadOptions,
+  ) {
+    const mutableSources: CSVExternalSecondaryInstanceSource[] = [];
     super(
       sources.map((source) => {
+        console.log('mapping', source);
+        if (source instanceof CSVExternalSecondaryInstanceSource) { // are all mutable sources csv??
+          console.log('adding to array');
+          mutableSources.push(source);
+        }
         const { root } = source.parseDefinition();
 
         return [root.getAttributeValue('id'), root];
       })
     );
+    this.mutableSources = mutableSources;
   }
 }

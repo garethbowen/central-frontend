@@ -66,6 +66,10 @@ export abstract class BaseInstantiableFormResult<
     this.resetInstance = (instanceConfig: FormInstanceConfig = {}) => {
       instanceOptions.scope.dispose();
       instanceOptions.scope = createPotentiallyClientOwnedReactiveScope();
+      // TODO this makes the stack async :/
+      setTimeout(() => {
+        instanceOptions.secondaryInstances.reloadMutableSecondaryInstances();
+      }, 2000);
       return this.createInstance(instanceConfig);
     };
 

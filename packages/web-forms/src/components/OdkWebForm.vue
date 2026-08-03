@@ -51,6 +51,8 @@ import { FormInitializationError } from '@/lib/error/FormInitializationError';
 const webFormsVersion = __WEB_FORMS_VERSION__;
 type ObjectURL = `blob:${string}`;
 
+import { getFormInstanceConfig } from '../lib/init/engine-config';
+
 export interface OdkWebFormsProps {
 	readonly formXml: string;
 	readonly fetchFormAttachment: FetchFormAttachment;
@@ -88,6 +90,10 @@ const hostSubmissionResultCallbackFactory = (
 			instanceDefaults: props.instanceDefaults,
 			deviceID: props.deviceId,
 		};
+		console.log('waiting for reload');
+		await currentState.instance.formResult.secondaryInstances.reloadMutableSecondaryInstances();
+		console.log('reladed')
+		// currentState.instance.formResult.instanceOptions.secondaryInstances.reloadMutableSecondaryInstances();
 		state.value = updateSubmittedFormState(submissionResult, currentState, options);
 		if (submissionResult?.next === POST_SUBMIT__NEW_INSTANCE) {
 			document.scrollingElement?.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

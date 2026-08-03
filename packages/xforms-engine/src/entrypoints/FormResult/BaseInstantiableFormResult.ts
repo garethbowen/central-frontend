@@ -45,11 +45,13 @@ export abstract class BaseInstantiableFormResult<
 
   constructor(options: BaseInstantiableFormResultOptions<Status>) {
     const { status, warnings, error, instanceOptions } = options;
+    const { secondaryInstances } = instanceOptions;
 
     super({
       status,
       warnings,
       error,
+      secondaryInstances,
     });
 
     this.createInstance = (instanceConfig: FormInstanceConfig = {}) => {
@@ -66,10 +68,7 @@ export abstract class BaseInstantiableFormResult<
     this.resetInstance = (instanceConfig: FormInstanceConfig = {}) => {
       instanceOptions.scope.dispose();
       instanceOptions.scope = createPotentiallyClientOwnedReactiveScope();
-      // TODO this makes the stack async :/
-      setTimeout(() => {
-        instanceOptions.secondaryInstances.reloadMutableSecondaryInstances();
-      }, 2000);
+      // await instanceOptions.secondaryInstances.reloadMutableSecondaryInstances();
       return this.createInstance(instanceConfig);
     };
 

@@ -37,6 +37,7 @@ export class FormFailureResult extends BaseFormResult<'failure'> implements Load
       status: 'failure',
       warnings,
       error,
+      secondaryInstances: undefined
     });
 
     this.createInstance = failedFormResultMethodFactory(error);

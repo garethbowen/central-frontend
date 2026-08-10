@@ -51,8 +51,16 @@ const visibleModal = ref();
 const withToken = (url) => `${url}${queryString({ st: props.st })}`;
 
 const getAttachment = (requestUrl: URL) => {
-  const encodedName = encodeURIComponent(requestUrl.pathname.split('/').pop()!);
-  const url = withToken(`/v1/projects/${props.form.projectId}/forms/${props.form.xmlFormId}${draftPath.value}/attachments/${encodedName}`);
+  let url;
+  const parts = requestUrl.pathname.split('/');
+  const fileName = encodeURIComponent(parts[parts.length - 1]!);
+  if (parts[1] === 'dataset') {
+    // TODO endpoint doesn't exist
+    // url = withToken(`/v1/projects/${props.form.projectId}/datasets/${parts[2]}${draftPath.value}/attachments/${fileName}`);
+    url = `/${fileName}`;
+  } else {
+    url = withToken(`/v1/projects/${props.form.projectId}/forms/${props.form.xmlFormId}${draftPath.value}/attachments/${fileName}`);
+  }
   return fetch(url);
 };
 

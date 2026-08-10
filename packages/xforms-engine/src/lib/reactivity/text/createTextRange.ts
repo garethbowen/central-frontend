@@ -29,19 +29,36 @@ const generateResourceChunk = (context: EvaluationContext, child: Element, type:
         parts.push(createComputedExpression(context, expression)());
       }
     } else if (isTextNode(grandchild)) {
-      parts.push(grandchild.data);
+      if (grandchild.parentElement?.hasAttribute('reference')) { // check reference=true
+        const referencedNode = context.contextNode.getXPathChildNodes()
+          .find(child => child.qualifiedName.localName === grandchild.data);
+        if (referencedNode) {
+          const datasetname = 'coffees'; // get this from context
+          const filename = referencedNode.getXPathValue();
+          const part = `jr://file/dataset/${datasetname}/image/${filename}`;
+          parts.push(part);
+        }
+      } else {
+        parts.push(grandchild.data);
+      }
     }
   }
   const url = parts.join('') as JRResourceURLString;
   return TextChunkExpression.fromResource(url, type);
 };
 
-const generateChunk = (node: Node): TextChunkExpression<'string'> | null => {
+const generateChunk = (context: EvaluationContext, node: Node): TextChunkExpression<'string'> | null => {
   if (isElementNode(node)) {
     return TextChunkExpression.fromOutput(node);
   }
   if (isTextNode(node)) {
-    return TextChunkExpression.fromLiteral(node.data);
+    if (node.parentElement?.hasAttribute('reference')) { // check reference=true
+      const referencedNode = context.contextNode.getXPathChildNodes()
+        .find(child => child.qualifiedName.localName === node.data);
+      return referencedNode ? TextChunkExpression.fromLiteral(referencedNode.getXPathValue()) : null;
+    } else {
+      return TextChunkExpression.fromLiteral(node.data);
+    }
   }
   return null;
 };
@@ -57,7 +74,7 @@ const generateChunksForTranslation = (
       chunks.push(generateResourceChunk(context, child, formAttribute));
     } else {
       for (const grandchild of child.childNodes) {
-        const chunk = generateChunk(grandchild);
+        const chunk = generateChunk(context, grandchild);
         if (chunk) {
           chunks.push(chunk);
         }

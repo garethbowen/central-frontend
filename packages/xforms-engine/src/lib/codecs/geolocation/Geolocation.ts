@@ -1,4 +1,9 @@
-import { formatDecimal } from '../../number-parsers';
+// Specific formatter required for geolocation decimals so trailing '.0' is added to integers
+const GEOLOCATION_DECIMAL_FORMATTER = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 20, // This is the maximum under Node 20. Raise to 100 when we drop support.
+  useGrouping: false,
+});
 
 abstract class SemanticValue<Semantic extends string, Value extends number | null> {
   abstract readonly semantic: Semantic;
@@ -139,7 +144,7 @@ export class Geolocation {
 
     return new this(decodedValue)
       .getTuple()
-      .map((item) => formatDecimal(item.value))
+      .map((item) => GEOLOCATION_DECIMAL_FORMATTER.format(item.value))
       .join(' ');
   }
 

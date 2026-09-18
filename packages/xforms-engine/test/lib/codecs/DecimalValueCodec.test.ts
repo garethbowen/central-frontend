@@ -6,15 +6,15 @@ describe('DecimalValueCodec', () => {
 
   describe('encode', () => {
     it.each([
-      { input: 1, expected: '1.0' },
+      { input: 1, expected: '1' },
       { input: 1.1, expected: '1.1' },
-      { input: 1234567, expected: '1234567.0' },
+      { input: 1234567, expected: '1234567' },
       { input: 1234.567, expected: '1234.567' },
       { input: -1234.567, expected: '-1234.567' },
-      { input: 100, expected: '100.0' },
-      { input: '100', expected: '100.0' },
+      { input: 100, expected: '100' },
+      { input: '100', expected: '100' },
       { input: null, expected: '' },
-      { input: 123456789123456789n, expected: '123456789123456789.0' },
+      { input: 123456789123456789n, expected: '123456789123456789' },
       { input: 'e', expected: '' },
     ])('turns $input into $expected', ({ input, expected }) => {
       const actual = codec.encodeValue(input);

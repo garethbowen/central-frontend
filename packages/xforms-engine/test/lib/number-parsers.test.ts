@@ -17,7 +17,7 @@ describe('NumberParsers', () => {
       { input: '0', expected: 0 },
       { input: '5999', expected: 5999 },
       { input: '-99', expected: -99 },
-    ])('should parse integer strings', ({ input, expected }) => {
+    ])('should parse $input', ({ input, expected }) => {
       try {
         expect(parseToInteger(input)).toEqual(expected);
       } catch {
@@ -41,7 +41,7 @@ describe('NumberParsers', () => {
       { input: false, expected: new Error('Expected an integer, but got: false') },
       { input: true, expected: new Error('Expected an integer, but got: true') },
       { input: undefined, expected: new Error('Expected an integer, but got: undefined') },
-    ])('should throw error for non-integer numbers', ({ input, expected }) => {
+    ])('should throw error for $input', ({ input, expected }) => {
       try {
         // @ts-expect-error Ignoring TS2345: Testing invalid input
         parseToInteger(input);
@@ -58,7 +58,7 @@ describe('NumberParsers', () => {
       { input: '0', expected: 0 },
       { input: '5999', expected: 5999 },
       { input: '-99', expected: -99 },
-    ])('should parse float and integers strings', ({ input, expected }) => {
+    ])('should parse $input', ({ input, expected }) => {
       try {
         expect(parseToFloat(input)).toEqual(expected);
       } catch {
@@ -81,7 +81,7 @@ describe('NumberParsers', () => {
       { input: false, expected: new Error('Expected a float, but got: false') },
       { input: true, expected: new Error('Expected a float, but got: true') },
       { input: undefined, expected: new Error('Expected a float, but got: undefined') },
-    ])('should throw error for non-float or non-integer numbers', ({ input, expected }) => {
+    ])('should throw error for $input', ({ input, expected }) => {
       try {
         // @ts-expect-error Ignoring TS2345: Testing invalid input
         parseToFloat(input);

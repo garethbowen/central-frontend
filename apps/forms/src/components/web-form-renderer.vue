@@ -256,6 +256,12 @@ const editInstanceOptions = computed(() => {
   return null;
 });
 
+const restoreInstanceOptions = computed(() => {
+  return {
+    resolveInstance: () => '<data id="simple" version="&amp;test"><meta><instanceID></instanceID></meta><first_name>gareth</first_name><city>toronto</city></data>'
+  };
+});
+
 const alreadySubmittedOnce = () => {
   return props.form.once && props.form.enketoOnceId && hasSubmitted(props.form.enketoOnceId);
 };
@@ -285,6 +291,7 @@ onMounted(async () => {
   <OdkWebForm v-if="inited"
     :form-xml="props.xform"
     :edit-instance="editInstanceOptions"
+    :restore-instance="restoreInstanceOptions"
     :fetch-form-attachment="getAttachment"
     :device-id="deviceID"
     :instance-defaults="defaultParameters"

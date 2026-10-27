@@ -232,6 +232,7 @@ const handleSubmit = async (
   clearForm = clearFormCallback;
 
   await submitData();
+  // TODO clear autosave
   updateLastSaved(hasLastSaved);
 };
 
@@ -268,7 +269,6 @@ const restoreInstanceOptions = computed(() => {
       resolveInstance: () => xml,
       attachmentFileNames: attachments.map(file => file.name),
       resolveAttachment: (fileName: string) => {
-        console.log('resolvng', fileName);
         const attachment = attachments.find(file => file.name === fileName);
         if (!attachment) {
           throw new Error(); // TODO handle
@@ -285,7 +285,6 @@ const restoreInstanceOptions = computed(() => {
 
 const storeAutosaveUpdate = (payload: UpdatePayload) => {
   // TODO should the api be to provide the form?
-  console.log('instance', payload);
   setAutosave(props.form.projectId, props.form.xmlFormId, payload);
 };
 

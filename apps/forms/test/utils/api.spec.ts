@@ -106,6 +106,7 @@ describe('Test api utility', () => {
       state: 'open',
       draft: false,
       webformsEnabled: false,
+      autosaveEnabled: false,
       attachments: [ { name: 'myfile.png' } ],
       once: false,
     };

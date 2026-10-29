@@ -43,6 +43,7 @@ describe('WebFormRenderer', () => {
     state: 'open',
     draft: false,
     webformsEnabled: true,
+    autosaveEnabled: false,
     once: false,
     attachments: []
   };
@@ -125,6 +126,7 @@ describe('WebFormRenderer', () => {
       draft: false,
       once: false,
       webformsEnabled: true,
+      autosaveEnabled: false,
       attachments: [ { name: 'cities.csv' } ]
     };
     const component = await mountComponent(formWithAttachmentXml, given);
@@ -146,6 +148,7 @@ describe('WebFormRenderer', () => {
       draft: false,
       once: false,
       webformsEnabled: true,
+      autosaveEnabled: false,
       attachments: [ { name: 'not-right-image.jpg' } ] // attachment name doesn't match
     };
     const component = await mountComponent(formWithImageAttachmentXml, given);

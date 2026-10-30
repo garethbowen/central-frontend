@@ -94,42 +94,61 @@ describe('Time bind type', () => {
       expect(answer.stringValue).toBe('');
     });
 
-    it.each([
-      '22:02:00.000+07:00',
-      '22:02:00+07:00',
-      '22:02:00.000-07:00',
-      '22:02:00-07:00',
-      '22:02:00.000Z',
-      '22:02:00Z',
-      '22:02:00.000',
-      '22:02:00',
-    ])('sets value with valid time (%s)', (expression) => {
-      scenario.answer('/root/input-time', expression);
-      const answer = getInputAnswer();
+    describe('string', () => {
+      it.each([
+        '22:02:02.000+07:00',
+        '22:02:02+07:00',
+        '22:02:02.000-07:00',
+        '22:02:02-07:00',
+        '22:02:02.000Z',
+        '22:02:02Z',
+        '22:02:02.000',
+        '22:02:02',
+        '2026-02-24T22:02:02',
+      ])('sets value with valid time (%s)', (expression) => {
+        scenario.answer('/root/input-time', expression);
+        const answer = getInputAnswer();
+        const expected = '22:02:02';
 
-      expect(answer.value).to.deep.equal(expression);
-      expect(answer.stringValue).toEqual(expression);
+        expect(answer.value).to.deep.equal(expected);
+        expect(answer.stringValue).toEqual(expected);
+      });
+
+      it.each([
+        '25:02:00',
+        '24:00:00',
+        '22:60:00',
+        '22:02:61',
+        '22:02:00+invalid',
+        '22:02:00.Z', // Malformed decimal/Z combination
+        'noon',
+        'XX:YY:ZZ',
+      ])('has null when incorrect value %s is passed', (expression) => {
+        scenario.answer('/root/input-time', expression);
+        const answer = getInputAnswer();
+
+        expect(answer.value).toBeNull();
+        expect(answer.stringValue).toBe('');
+      });
     });
 
-    it.each([
-      '25:02:00',
-      '24:00:00',
-      '22:60:00',
-      '22:02:61',
-      '22:02',
-      '22',
-      '22:02:00+25:00',
-      '22:02:00+invalid',
-      '22:02:00.Z', // Malformed decimal/Z combination
-      'noon',
-      'XX:YY:ZZ',
-      '2026-02-24T22:02:00',
-    ])('has null when incorrect value %s is passed', (expression) => {
-      scenario.answer('/root/input-time', expression);
-      const answer = getInputAnswer();
+    describe('date', () => {
+      const toDate = (time: string) => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return new Date(`${year}-${month}-${day}T${time}`);
+      };
 
-      expect(answer.value).toBeNull();
-      expect(answer.stringValue).toBe('');
+      it.each(['22:02:02.000', '22:02:02'])('sets value with valid time (%s)', (expression) => {
+        scenario.answer('/root/input-time', toDate(expression));
+        const answer = getInputAnswer();
+        const expected = '22:02:02';
+
+        expect(answer.value).to.deep.equal(expected);
+        expect(answer.stringValue).toEqual(expected);
+      });
     });
   });
 });

@@ -1,8 +1,3 @@
-import {
-  FRACTIONAL_SECOND_DIGITS,
-  ISO_TIME_WITH_OPTIONAL_OFFSET_PATTERN,
-  VALID_OFFSET_VALUE,
-} from '@getodk/common/constants/datetime.ts';
 import { Temporal } from 'temporal-polyfill';
 import { type CodecDecoder, type CodecEncoder, ValueCodec } from './ValueCodec.ts';
 
@@ -17,20 +12,15 @@ export type TimeInputValue =
   | null;
 
 const validateTimeString = (value: string): TimeRuntimeValue => {
-  const match = ISO_TIME_WITH_OPTIONAL_OFFSET_PATTERN.exec(value ?? '');
-  if (!match?.length) {
-    return null;
+  if (value.endsWith('Z')) {
+    value = value.slice(0, -1);
   }
-
-  const [, timeOnly = '', offset] = match;
   try {
     // Delegate bounds checking to Temporal
-    Temporal.PlainTime.from(timeOnly);
+    return Temporal.PlainTime.from(value).toString();
   } catch {
     return null;
   }
-
-  return offset && !VALID_OFFSET_VALUE.test(offset) ? null : value;
 };
 
 const parseZonedDateTimeToString = (value: Temporal.ZonedDateTime): string => {
@@ -38,8 +28,7 @@ const parseZonedDateTimeToString = (value: Temporal.ZonedDateTime): string => {
     return '';
   }
 
-  const time = value.toPlainTime().toString({ fractionalSecondDigits: FRACTIONAL_SECOND_DIGITS });
-  return `${time}${value.offset}`;
+  return value.toPlainTime().toString({ fractionalSecondDigits: 0 });
 };
 
 /**
@@ -73,7 +62,6 @@ const toTimeString = (value: TimeInputValue): string => {
     if (value instanceof Temporal.ZonedDateTime) {
       return parseZonedDateTimeToString(value);
     }
-
     return validateTimeString(value) ?? '';
   } catch {
     return '';

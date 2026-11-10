@@ -4,7 +4,6 @@ import { computed, onMounted, ref } from 'vue';
 import { OdkWebForm, POST_SUBMIT__NEW_INSTANCE } from '@getodk/web-forms';
 import { type MonolithicInstancePayload } from '@getodk/xforms-engine';
 import { postPrimaryInstance, uploadAttachment, getFormAttachment, type Form } from '../utils/api';
-import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import { Translation } from 'vue-i18n'
 import Location from '../utils/location';
@@ -13,6 +12,7 @@ import { hideSpinner } from '../utils/spinner';
 import { deleteLastSaved, getLastSaved, setLastSaved } from '../utils/last-saved';
 import { hasSubmitted, setSubmitted } from '../utils/once-store';
 import { setLocale } from '../i18n';
+import FormCompleteDialog, { type ModalType } from './form-complete-dialog.vue';
 
 defineOptions({
   name: 'WebFormRenderer'
@@ -26,6 +26,7 @@ export interface WebFormsRendererProps {
   submissionAttachments?: string[] | null;
   defaultParameters?: Record<string, string>;
   st?: string | null;
+  modal?: string | null;
 }
 
 const props = defineProps<WebFormsRendererProps>();
@@ -46,7 +47,12 @@ const lastSavedXml = ref<string | undefined>();
 
 const deviceID = getDeviceId();
 
-const visibleModal = ref();
+export interface ModalProps {
+  type: ModalType;
+  hideable: boolean;
+  errorMessage?: string;
+}
+const visibleModal = ref<ModalProps | undefined>(props.modal ? { type: props.modal, errorMessage: 'boom', hideable: false } as ModalProps : undefined);
 
 const getAttachment = (requestUrl: URL) => {
   const fileName = requestUrl.pathname.split('/').pop()!;
@@ -270,13 +276,6 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-.p-dialog-content pre {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
-</style>
-
 <template>
 
   <OdkWebForm v-if="inited"
@@ -290,13 +289,12 @@ onMounted(async () => {
     @languageSelected="setLocale"
     @submit="handleSubmit"/>
 
-  <Dialog modal :visible="!!visibleModal" :draggable="false" :closable="visibleModal?.hideable" @update:visible="visibleModal = null">
+  <FormCompleteDialog v-if="visibleModal" :type="visibleModal?.type">
 		<template #header>
-			<span role="heading">{{ $t(visibleModal.type + '.title') }}</span>
-		</template>
-
+      {{ $t(visibleModal.type + '.title') }}
+    </template>
     <template #default>
-      <Translation v-if="visibleModal.type === 'errorModal'" tag="p" keypath="errorModal.body">
+      <Translation v-if="visibleModal.type === 'errorModal' && visibleModal?.errorMessage" keypath="errorModal.body">
         <template #errorMessage>
           <pre>{{ $t(visibleModal.errorMessage) }}</pre>
         </template>
@@ -304,12 +302,12 @@ onMounted(async () => {
           <a href="mailto:support@getodk.org">support@getodk.org</a>
         </template>
       </Translation>
-      <Translation v-else-if="visibleModal.type === 'retryModal'" tag="p" keypath="retryModal.body">
+      <Translation v-else-if="visibleModal.type === 'retryModal'" keypath="retryModal.body">
         <template #supportEmail>
           <a href="mailto:support@getodk.org">support@getodk.org</a>
         </template>
       </Translation>
-      <Translation v-else-if="visibleModal.type === 'sessionTimeoutModal'" tag="p" keypath="sessionTimeoutModal.body.full">
+      <Translation v-else-if="visibleModal.type === 'sessionTimeoutModal'" keypath="sessionTimeoutModal.body.full">
         <template #here>
           <a href="/login" target="_blank">{{ $t('sessionTimeoutModal.body.here') }}</a>
         </template>
@@ -320,7 +318,7 @@ onMounted(async () => {
     </template>
     <template #footer>
       <template v-if="visibleModal.type === 'submissionModal'">
-        <Button type="button" @click="visibleModal = null">{{ $t('submissionModal.action.fillOutAgain') }}</Button>
+        <Button type="button" @click="visibleModal = undefined">{{ $t('submissionModal.action.fillOutAgain') }}</Button>
       </template>
       <!-- Any type of error while sending attachments -->
       <template v-else-if="visibleModal.type === 'retryModal'
@@ -331,11 +329,10 @@ onMounted(async () => {
       <template v-else-if="visibleModal.type === 'previewModal'
         || visibleModal.type === 'errorModal'
         || visibleModal.type === 'sessionTimeoutModal' && visibleModal.hideable">
-        <Button type="button" @click="visibleModal = null">{{ $t('action.close') }}</Button>
+        <Button type="button" @click="visibleModal = undefined">{{ $t('action.close') }}</Button>
       </template>
     </template>
-  </Dialog>
-
+  </FormCompleteDialog>
 </template>
 
 <i18n lang="json5">

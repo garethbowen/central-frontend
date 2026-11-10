@@ -289,12 +289,12 @@ onMounted(async () => {
     @languageSelected="setLocale"
     @submit="handleSubmit"/>
 
-  <FormCompleteDialog v-if="visibleModal" :type="visibleModal?.type">
-		<template #header>
+  <FormCompleteDialog :type="visibleModal?.type">
+    <template #header v-if="visibleModal?.type">
       {{ $t(visibleModal.type + '.title') }}
     </template>
-    <template #default>
-      <Translation v-if="visibleModal.type === 'errorModal' && visibleModal?.errorMessage" keypath="errorModal.body">
+    <template #default v-if="visibleModal?.type">
+      <Translation v-if="visibleModal.type === 'errorModal' && visibleModal.errorMessage" keypath="errorModal.body">
         <template #errorMessage>
           <pre>{{ $t(visibleModal.errorMessage) }}</pre>
         </template>
@@ -316,7 +316,7 @@ onMounted(async () => {
         {{ $t(visibleModal.type + '.body') }}
       </span>
     </template>
-    <template #footer>
+    <template #footer v-if="visibleModal?.type">
       <template v-if="visibleModal.type === 'submissionModal'">
         <Button type="button" @click="visibleModal = undefined">{{ $t('submissionModal.action.fillOutAgain') }}</Button>
       </template>

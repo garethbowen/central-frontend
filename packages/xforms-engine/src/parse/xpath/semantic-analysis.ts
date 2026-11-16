@@ -435,7 +435,7 @@ type BrandedExpression<Expression extends string, Brand extends symbol> =
 	& Expression
 	& Readonly<Record<Brand, true>>;
 
-const CONSTANT_EXPRESSION = Symbol('CONSTANT_EXPRESSION');
+export const CONSTANT_EXPRESSION = Symbol('CONSTANT_EXPRESSION');
 type CONSTANT_EXPRESSION = typeof CONSTANT_EXPRESSION;
 
 /**
@@ -459,7 +459,7 @@ export const isConstantExpression = (expression: string): expression is Constant
   return findConstantExpressionNode(expression) != null;
 };
 
-const CONSTANT_TRUTHY_EXPRESSION = Symbol('CONSTANT_TRUTHY_EXPRESSION');
+export const CONSTANT_TRUTHY_EXPRESSION = Symbol('CONSTANT_TRUTHY_EXPRESSION');
 type CONSTANT_TRUTHY_EXPRESSION = typeof CONSTANT_TRUTHY_EXPRESSION;
 
 /**

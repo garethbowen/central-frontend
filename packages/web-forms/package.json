@@ -61,7 +61,6 @@
     "test:types:vitest": "vue-tsc --project ./tsconfig.vitest.json --emitDeclarationOnly false --noEmit"
   },
   "devDependencies": {
-    "@faker-js/faker": "^10.5.0",
     "@fontsource/roboto": "^5.2.9",
     "@getodk/xforms-engine": "1.1.1",
     "@primeuix/themes": "1.0.3",
@@ -76,7 +75,7 @@
     "vite-plugin-css-injected-by-js": "^3.5.2"
   },
   "peerDependencies": {
-    "vue": "^3.5.29"
+    "vue": "^3.5.44"
   },
   "dependencies": {
     "@formatjs/intl": "^4.1.14",
